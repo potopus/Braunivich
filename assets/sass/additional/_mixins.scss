@@ -1,0 +1,86 @@
+@mixin fluid-text($max: 16, $min: 12) {
+    font-size: clamp(#{$min}px, #{calc(($max / 1440) * 100)}vw, #{$max}px);
+}
+
+// работа со шрифтом пример:
+// h1{
+//     @include fluid-text(24, 16 );
+// }
+
+
+// гибкий размер
+@function fluid-space($fc-s-max: 16, $fc-s-min: 12, $fluid-max-width: 1180, $fluid-min-width: 375) {
+    $fluid-screen: 100vw;
+
+    // Вычисляем среднее значение
+    // $value:  calc(#{$fc-s-min}px + ($fc-s-max - $fc-s-min) * ((100vw - #{$fluid-min-width}px) / ($fluid-max-width - $fluid-min-width)));
+    // calc(((100vw - #{$fluid-min-width}px) / ($fluid-max-width - $fluid-min-width)) * ($fc-s-max - $fc-s-min) + #{$fc-s-max}px);
+
+    // calc([min size px] + ([max size] - [min size]) * ((100vw - [min viewport width px]) / ([max viewport width] - [min viewport width]))
+
+    // calc((100vw - 320px) / (1920 - 320) * (50 - 20) + 20px);
+    // Возвращаем результат
+    $change : calc(($fc-s-max - $fc-s-min) / ($fluid-max-width - $fluid-min-width)
+    );
+    $changeR: calc(round($change * 100000) / 100000);
+$A : calc(($fc-s-max - $fluid-max-width * $changeR));
+$B : calc(100vw * $changeR);
+
+@return clamp(#{$fc-s-min}px, #{$A}px + #{$B}, #{$fc-s-max}px);
+}
+
+//   h1{
+//     font-size: fluid-space(-s-max, -s-min, -max-width, -min-width);
+//   }
+
+
+@mixin reset-link {
+    color: inherit;
+
+    &,
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+// сброс начальных насроек ссылок пример:
+// a{@include reset-link()}
+
+
+// сброс начальных настроек кнопок
+@mixin reset-button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+// настройка флекс бокса добавление display
+@mixin flex-center ($isInline: false) {
+    @if $isInline {
+        display: inline-flex;
+    }
+
+    @else {
+        display: flex;
+    }
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+// абсолютное позиционирование по центру
+
+@mixin abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+// создание квадрата 
+@mixin square ($size) {
+    width: $size;
+    // height: $size;
+    aspect-ratio: 1;
+}
