@@ -1,0 +1,83 @@
+
+$desktop-above:1241px;
+$desktop:1240px;
+
+$hidden-nav-menu-header:1001px;
+
+$hidden-mobile-above:551px;
+$hidden-mobile:550px;
+
+$tablet-above:901px;
+$tablet:900px;
+$mobile-above:769px;
+$mobile:768px;
+
+@mixin desktop-above{
+    @media screen and (min-width:$desktop-above) {
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media screen and (max-width:$desktop) {
+        @content;
+    }
+}
+@mixin hidden-nav-menu-header{
+    @media screen and (min-width:$hidden-nav-menu-header) {
+        @content;
+    }
+}
+@mixin hidden-mobile-above{
+    @media screen and (min-width:$hidden-mobile-above) {
+        @content;
+    }
+}
+@mixin hidden-mobile{
+    @media screen and (max-width:$hidden-mobile) {
+        @content;
+    }
+}
+@mixin tablet-above{
+    @media screen and (min-width:$tablet-above) {
+        @content;
+    }
+}
+@mixin tablet{
+    @media screen and (max-width:$tablet) {
+        @content;
+    }
+}
+@mixin mobile-above{
+    @media screen and (min-width:$mobile-above) {
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$mobile) {
+        @content;
+    }
+}
+
+// убираем баг эффекта залипания при нажатии на элемент в мобильной версии вместо ховера актив 
+@mixin mobHover {
+    @media (hover:hover) {
+        &:hover{
+            @content;
+        }
+        
+    }
+    @media (hover:none) {
+        &:active{
+            @content;
+        }  
+    }
+}
+
+// пример использования
+// h1{
+//     background-color: black;
+//     @include mobHover{
+//         background-color: red;
+//     }
+// }

@@ -1,0 +1,88 @@
+@import "./mixins", "./variables";
+@import "./mixins";
+
+body {
+     font-family: var(--font-family-base) ;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.28;
+     color: var(--color-dark);
+    // background-color: ;
+    height: 100%;
+}
+
+.lock{
+    overflow: hidden;
+    height: 100%;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+    transition-duration: var(--transition-duration);
+}
+
+title{
+    font-size: fluid-space (27, 21, 1180, 375);
+}
+
+// пример с h1  с использованием sass переменных для мвычисления медиа запроса
+// h1 {
+//     // @media (max-width: 1000px) {
+//     //     &{
+//     //         font-size: $max-width-container;
+//     //     }
+//     // }
+
+//     @media (max-width: $max-width-container ) {
+//         & {
+//             //! добавить максимальный и минимальный шрифты
+//             // @include fluid-text(50, 24);
+//         }
+//     }
+
+// }
+
+
+
+// h2 {
+   
+
+//     @media (max-width: $max-width-container ) {
+//         & {
+//             //! добавить максимальный и минимальный шрифты
+//             // @include fluid-space (27, 21, 1180, 375);
+//         }
+//     }
+
+// }
+
+
+// h3 {
+   
+
+//     @media (max-width: $max-width-container ) {
+//         & {
+//             //! добавить максимальный и минимальный шрифты
+//             @include fluid-text(50, 24);
+//         }
+//     }
+
+// }
+
+
+// h4 {
+ 
+
+//     @media (max-width: $max-width-container ) {
+//         & {
+//             //! добавить максимальный и минимальный шрифты
+//             @include fluid-text(50, 24);
+//         }
+//     }
+
+// }
+
+
